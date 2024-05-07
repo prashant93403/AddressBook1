@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    tools {
+        maven 'M2_HOME'
+          }
+    stages {
+        stage('Git') {
+            steps {
+                git 'https://github.com/devopscbabu/DevOpsAddressBook.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        stage('package') {
+            steps {
+                sh 'mvn clean package'
+            }
+    }
+}
+}
